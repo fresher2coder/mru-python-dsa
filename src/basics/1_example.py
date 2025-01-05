@@ -17,7 +17,7 @@ byte_data = b"Hello"
 nothing = None
 
 # Single-line comment
-# This program calculates the square of a number
+# This program calculaq of a number
 
 number = int(input("Enter a number: "))  # User input
 square = number ** 2

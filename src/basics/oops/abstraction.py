@@ -16,3 +16,16 @@ class Rectangle(Shape):
 # Abstract class usage
 rectangle = Rectangle(10, 5)
 print(f"Area of rectangle: {rectangle.area()}")  # Output: Area of rectangle: 50
+
+
+#banking
+class RBI(ABC):
+    @abstractmethod
+    def saving_account_interest(self):
+        pass
+class SBI(RBI):
+    def saving_account_interest(self, balance):
+        return 0.1*balance
+
+sbi = SBI()
+print(sbi.saving_account_interest(10000))

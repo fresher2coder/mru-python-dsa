@@ -60,6 +60,87 @@ class LinkedList:
 
         self.__size += 1
 
+    def deleteAtEnd(self):
+        if self.isEmpty():
+            print("The list is empty, nothing to delete.")
+            return
+
+        if self.head == self.tail:  # Only one node
+            self.head = self.tail = None
+        else:
+            current = self.head
+            # Traverse till the second last node
+            while current.next != self.tail:
+                current = current.next
+            # Set tail to second last node and update its next pointer
+            current.next = None
+            self.tail = current
+
+        self.__size -= 1
+
+    def deleteAtBegin(self):
+        if self.isEmpty():
+            print("The list is empty, nothing to delete.")
+            return
+
+        # Move head to the next node
+        self.head = self.head.next
+
+        # If the list had only one node, set tail to None
+        if self.head is None:
+            self.tail = None
+
+        self.__size -= 1
+
+    def deleteAt(self, index):
+        if self.isEmpty():
+            print("The list is empty, nothing to delete.")
+            return
+
+        if index == 0:
+            self.deleteAtBegin()
+            return
+
+        if index >= self.__size - 1:
+            self.deleteAtEnd()
+            return
+
+        prev = None
+        current = self.head
+        while index > 0:  # Traverse till the index
+            prev = current
+            current = current.next
+            index -= 1
+        else:
+            # Remove the node
+            prev.next = current.next
+
+        self.__size -= 1
+
+    def removeAt(self, value):
+        index = self.search(value)  # Get the index of the value using search
+        if index is not None:
+            self.deleteAt(index)  # Use deleteAt to remove the node at the found index
+        else:
+            print(f"Value '{value}' not found in the list.")
+
+    def search(self, value):
+        if self.isEmpty():
+            print("The list is empty.")
+            return None
+
+        current = self.head
+        index = 0
+        while current is not None:
+            if current.city == value:  # Match the value
+                print(f"Value '{value}' found at index {index}.")
+                return index
+            current = current.next
+            index += 1
+
+        print(f"Value '{value}' not found in the list.")
+        return None
+
     def traversal(self):
         current = self.head
         while current is not None:

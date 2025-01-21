@@ -1,59 +1,22 @@
-from LinkedList import LinkedList
+from linked_list import LinkedList
 
-# Testing the LinkedList
-if __name__ == "__main__":
-    ll = LinkedList()
+trip = LinkedList()
 
-    print("INSERT AT END:")
-    ll.insert_at_end("Chennai")
-    ll.insert_at_end("Bangalore")
-    ll.insert_at_end("Hyderabad")
-    ll.insert_at_end("Mumbai")
-    print(f"\nIs 'Chennai' found: {ll.search('Chennai')}")
-    ll.traversal()
+trip.insertAtEnd("Chennai", "TN", 600059)
+trip.insertAtEnd("Bangalore", "KT", 700059)
+trip.insertAtEnd("Hyderabad", "TL", 800059)
+trip.insertAtEnd("Mumbai", "MH", 900059)
+trip.traversal()
 
-    ll.insert_at_end("Delhi")
-    ll.traversal()
+trip.insertAtBeginning("Kochin", "KR", 501254)
+trip.traversal()
 
-    print("\nINSERT AT BEGINNING:")
-    ll.insert_at_beginning("Kochin")
-    ll.traversal()
+trip.insertAt(0, city="Goa", state="Goa", pincode=125784)
+trip.traversal()
 
-    print("\nINSERT AT POSITION 4:")
-    ll.insert_at("Goa", 4)
-    ll.traversal()
+trip.insertAt(6, city="Delhi", state="Delhi", pincode=215784)
+trip.traversal()
 
-    print("\nINSERT AT POSITION 12:")
-    ll.insert_at("Kashmir", 12)
-    ll.traversal()
+trip.insertAt(5, city="Secundrabad", state="TL", pincode=412563)
+trip.traversal()
 
-    print("\nINSERT AT POSITION 1:")
-    ll.insert_at("Allapey", 1)
-    ll.traversal()
-
-    print("\nDELETE AT END:")
-    ll.delete_at_end()
-    ll.traversal()
-
-    print("\nDELETE AT BEGINNING:")
-    ll.delete_at_beginning()
-    ll.traversal()
-
-    print("\nDELETE AT:")
-    ll.delete_at("Lucknow")
-    ll.traversal()
-
-    ll.delete_at("Hyderabad")
-    ll.traversal()
-
-    ll.delete_at("Chennai")
-    ll.traversal()
-
-    print("\nDELETE AT END:")
-    ll.delete_at_end()
-    ll.delete_at_end()
-    ll.delete_at_end()
-    ll.delete_at_end()
-    ll.traversal()
-
-    print(f"\nIs 'Chennai' found: {ll.search('Chennai')}")

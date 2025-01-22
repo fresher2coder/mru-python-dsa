@@ -141,6 +141,16 @@ class LinkedList:
         print(f"Value '{value}' not found in the list.")
         return None
 
+    def reverse(self):
+        prev = None
+        current = self.head
+        while current:
+            next_node = current.next  # Store the next node
+            current.next = prev  # Reverse the pointer
+            prev = current  # Move prev to current
+            current = next_node  # Move current to next node
+        self.head = prev  # Update head to the new front
+
     def traversal(self):
         current = self.head
         while current is not None:

@@ -59,3 +59,8 @@ trip.search("Mumbai")
 
 print("\nSearch for 'Pune':")
 trip.search("Pune")
+
+print("\nReverse: ")
+trip.traversal()
+trip.reverse()
+trip.traversal()

@@ -83,12 +83,11 @@ class LinkedList:
             print("The list is empty, nothing to delete.")
             return
 
-        # Move head to the next node
-        self.head = self.head.next
-
-        # If the list had only one node, set tail to None
-        if self.head is None:
-            self.tail = None
+        if self.head == self.tail:
+            self.head = self.tail = None
+        else:
+            # Move head to the next node
+            self.head = self.head.next
 
         self.__size -= 1
 
@@ -100,8 +99,8 @@ class LinkedList:
         if index == 0:
             self.deleteAtBegin()
             return
-
-        if index >= self.__size - 1:
+        #6(index: 0-5) -> index: 6, 7, 8....
+        if index >= self.__size:
             self.deleteAtEnd()
             return
 
@@ -144,12 +143,19 @@ class LinkedList:
     def reverse(self):
         prev = None
         current = self.head
-        while current:
-            next_node = current.next  # Store the next node
-            current.next = prev  # Reverse the pointer
-            prev = current  # Move prev to current
-            current = next_node  # Move current to next node
-        self.head = prev  # Update head to the new front
+        next_node = self.head.next
+
+        while next_node is not None:
+            current.next = prev
+
+            prev = current
+            current = next_node
+            next_node = next_node.next
+        else:
+            current.next = prev
+
+            self.tail = self.head
+            self.head = current
 
     def traversal(self):
         current = self.head

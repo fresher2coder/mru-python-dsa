@@ -1,7 +1,6 @@
 #form <file-name> import <class-name>
 from node import Node
 
-# Doubly Linked List class
 class DoublyLinkedList:
     def __init__(self):
         self.head = None
@@ -9,10 +8,10 @@ class DoublyLinkedList:
         self.__size = 0
 
     def insertAtBeginning(self, city, state=None, pincode=None):
-        new_node = self.createNewNode(city, state, pincode)
 
+        new_node = self.createNewNode(city, state, pincode)
         if self.head is None:
-            self.head = self.tail = new_node
+           self.createLinkedList(new_node)
         else:
             new_node.next = self.head
             self.head.prev = new_node
@@ -21,18 +20,19 @@ class DoublyLinkedList:
         self.__size += 1
 
     def insertAtEnd(self, city, state=None, pincode=None):
+        # new-node
         new_node = self.createNewNode(city, state, pincode)
-
         if self.isEmpty():
             self.createLinkedList(new_node)
         else:
-            new_node.prev = self.tail
             self.tail.next = new_node
+            new_node.prev = self.tail
             self.tail = new_node
 
         self.__size += 1
 
     def insertAt(self, index, **data):
+        # print(data)
         new_node = self.createNewNode(data['city'], data['state'], data['pincode'])
 
         if self.isEmpty():
@@ -43,20 +43,22 @@ class DoublyLinkedList:
             self.insertAtBeginning(data['city'], data['state'], data['pincode'])
             return
 
-        if index >= self.__size:
+        if index >= self.__size: # 6 7 8 ....
             self.insertAtEnd(data['city'], data['state'], data['pincode'])
             return
 
+        #traversal till the index
+
         current = self.head
-        while index > 0:
+        while index>0: #2 1
             current = current.next
             index -= 1
-
-        new_node.prev = current.prev
-        new_node.next = current
-        if current.prev:
+        else:
             current.prev.next = new_node
-        current.prev = new_node
+            new_node.prev = current.prev
+
+            new_node.next = current
+            current.prev = new_node
 
         self.__size += 1
 
@@ -65,11 +67,16 @@ class DoublyLinkedList:
             print("The list is empty, nothing to delete.")
             return
 
-        if self.head == self.tail:
+        if self.head == self.tail:  # Only one node
             self.head = self.tail = None
         else:
-            self.tail = self.tail.prev
-            self.tail.next = None
+            current = self.head
+            # Traverse till the second last node
+            while current.next != self.tail:
+                current = current.next
+            # Set tail to second last node and update its next pointer
+            current.next = None
+            self.tail = current
 
         self.__size -= 1
 
@@ -81,8 +88,8 @@ class DoublyLinkedList:
         if self.head == self.tail:
             self.head = self.tail = None
         else:
+            # Move head to the next node
             self.head = self.head.next
-            self.head.prev = None
 
         self.__size -= 1
 
@@ -94,26 +101,27 @@ class DoublyLinkedList:
         if index == 0:
             self.deleteAtBegin()
             return
-
+        #6(index: 0-5) -> index: 6, 7, 8....
         if index >= self.__size:
             self.deleteAtEnd()
             return
 
+        prev = None
         current = self.head
-        while index > 0:
+        while index > 0:  # Traverse till the index
+            prev = current
             current = current.next
             index -= 1
-
-        current.prev.next = current.next
-        if current.next:
-            current.next.prev = current.prev
+        else:
+            # Remove the node
+            prev.next = current.next
 
         self.__size -= 1
 
     def removeAt(self, value):
-        index = self.search(value)
+        index = self.search(value)  # Get the index of the value using search
         if index is not None:
-            self.deleteAt(index)
+            self.deleteAt(index)  # Use deleteAt to remove the node at the found index
         else:
             print(f"Value '{value}' not found in the list.")
 
@@ -125,7 +133,7 @@ class DoublyLinkedList:
         current = self.head
         index = 0
         while current is not None:
-            if current.city == value:
+            if current.city == value:  # Match the value
                 print(f"Value '{value}' found at index {index}.")
                 return index
             current = current.next
@@ -135,27 +143,33 @@ class DoublyLinkedList:
         return None
 
     def reverse(self):
+        prev = None
         current = self.head
-        self.tail = self.head
+        next_node = self.head.next
 
-        while current is not None:
-            current.prev, current.next = current.next, current.prev
-            if current.prev is None:
-                self.head = current
-            current = current.prev
+        while next_node is not None:
+            current.next = prev
+
+            prev = current
+            current = next_node
+            next_node = next_node.next
+        else:
+            current.next = prev
+
+            self.tail = self.head
+            self.head = current
 
     def traversal(self):
         current = self.head
         while current is not None:
-            print(f"{current.city} -> ", end="")
+            print(current.city, "->", sep=" ", end=" ")
             current = current.next
         else:
             print("None")
 
-    def traversalReverse(self):
         current = self.tail
         while current is not None:
-            print(f"{current.city} -> ", end="")
+            print(current.city, "->", sep=" ", end=" ")
             current = current.prev
         else:
             print("None")

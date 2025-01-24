@@ -1,7 +1,7 @@
-from linked_list import DoublyLinkedList
+from linked_list import DoublyCircularLinkedList
 
 # Initialize the LinkedList
-trip = DoublyLinkedList()
+trip = DoublyCircularLinkedList()
 
 # Insert at the end
 print("Insert at the end:")

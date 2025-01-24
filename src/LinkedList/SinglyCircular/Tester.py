@@ -1,10 +1,10 @@
-from linked_list import DoublyLinkedList
+from linked_list import SinglyLinkedList
 
 # Initialize the LinkedList
-trip = DoublyLinkedList()
+trip = SinglyLinkedList()
 
 # Insert at the end
-print("Insert at the end:")
+print("\nInsert at the end:")
 trip.insertAtEnd("Chennai", "TN", 600059)
 trip.insertAtEnd("Bangalore", "KT", 700059)
 trip.insertAtEnd("Hyderabad", "TL", 800059)
@@ -60,3 +60,7 @@ trip.search("Mumbai")
 print("\nSearch for 'Pune':")
 trip.search("Pune")
 
+print("\nReverse: ")
+trip.traversal()
+trip.reverse()
+trip.traversal()

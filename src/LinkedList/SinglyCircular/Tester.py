@@ -1,7 +1,7 @@
-from linked_list import SinglyLinkedList
+from linked_list import LinkedList
 
 # Initialize the LinkedList
-trip = SinglyLinkedList()
+trip = LinkedList()
 
 # Insert at the end
 print("\nInsert at the end:")

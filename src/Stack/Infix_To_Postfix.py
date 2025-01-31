@@ -1,8 +1,6 @@
 # Function to get the precedence of an operator
 def precedence(op):
-    if op == '^':
-        return 3
-    elif op == '*' or op == '/':
+    if op == '*' or op == '/':
         return 2
     elif op == '+' or op == '-':
         return 1
@@ -20,7 +18,7 @@ def infix_to_postfix(exp):
     stack = []  # Stack implemented using a list
     result = []
 
-    for char in exp:
+    for char in exp: #a +b*c 5+6*3
         # If the character is an operand, add it to the result
         if char.isalnum():
             result.append(char)

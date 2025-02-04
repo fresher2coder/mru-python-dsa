@@ -1,18 +1,22 @@
-participants=input()
-obstacle=[]
-winner=[]
-for i in range(len(participants)-1,-1,-1):
-  if participants[i]=='0':
-    obstacle.append(participants[i])
+from collections import deque
+participants = input()
+hurdles = deque() #stack []
+winners = deque() #queue []
+
+for i in range(len(participants)-1, -1, -1):
+  if participants[i] == "0":
+    hurdles.append("0")
+  elif hurdles and hurdles[-1]=="0":
+    hurdles.pop()
   else:
-    if len(obstacle)!=0:
-      obstacle.pop()
-    else:
-      winner.append(participants[i])
-if len(winner)==0:
-  print(-1)
+    winners.append(participants[i])
 else:
-  print("".join(winner))
+  print("".join(winners))
+
+
+
+
+
 
 
 

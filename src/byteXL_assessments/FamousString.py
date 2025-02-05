@@ -1,21 +1,27 @@
-def is_same_type(a,b):
+# 12abc@#$w7!j8
+# c@w7!j8
+from collections import deque
+
+def is_same(a, b):
   if a.isalpha() and b.isalpha():
     return True
   if a.isdigit() and b.isdigit():
     return True
   if not a.isalnum() and not b.isalnum():
     return True
-  return False
-n=int(input())
-string=input()
-stack=[]
+
+
+string = input()
+stack = deque()
+
 for char in string:
-  if stack and is_same_type(stack[-1],char):
+  if stack and is_same(char, stack[-1]):
     stack.pop()
   else:
     stack.append(char)
-if stack:
-  print("".join(stack[::-1]))
+stack.reverse()
+print("".join(stack))
+
 
 # Background:
 # There are some strings which are called famous strings which follow some common rules. The rules are:

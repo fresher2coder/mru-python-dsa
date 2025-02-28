@@ -23,8 +23,6 @@ class GraphList:
             if neighbor not in visited:
                 self.dfs(graph, neighbor, visited)
 
-    from collections import deque
-
     def bfs(self, graph, start):
         visited = set()
         queue = deque([start])

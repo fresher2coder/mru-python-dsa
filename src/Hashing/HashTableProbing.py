@@ -3,7 +3,7 @@ class HashTableProbing:
 
     def __init__(self, size):
         self.size = size
-        self.table = [None] * size  # Initialize table with None
+        self.table = [None] * size  # Initialize table with None 10
 
     def hash_function(self, key):
         return key % self.size

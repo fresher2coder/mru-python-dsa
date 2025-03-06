@@ -1,7 +1,6 @@
 def swap(arr, i, j):
     arr[i], arr[j] = arr[j], arr[i]
 
-
 def partition(arr, low, high):
     pivot = arr[low]
     left = low + 1
@@ -22,17 +21,14 @@ def partition(arr, low, high):
     swap(arr, low, right)
     return right
 
-
 def quick_sort(arr, low, high):
     if low < high:
         pi = partition(arr, low, high)
         quick_sort(arr, low, pi - 1)
         quick_sort(arr, pi + 1, high)
 
-
 def print_array(arr):
     print(" ".join(map(str, arr)))
-
 
 # Example usage
 arr = [45, 56, 7, 15, 34, 29, 61, 8, 14, 10]
@@ -45,3 +41,4 @@ quick_sort(arr, 0, n - 1)
 
 print("Sorted Array:")
 print_array(arr)
+

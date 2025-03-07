@@ -1,8 +1,8 @@
-def merge(arr, left, mid, right):
-    n1 = mid - left + 1  # left to mid
-    n2 = right - mid     # mid+1 to right
+def merge(arr, left, mid, right): #arr, 0, 4, 9,
+    n1 = mid - left + 1  # left to mid 0 4
+    n2 = right - mid     # mid+1 to right 5 9
 
-    L = arr[left:mid + 1]   # Left subarray
+    L = arr[left:mid+1]   # Left subarray
     R = arr[mid + 1:right + 1]  # Right subarray
 
     i, j, k = 0, 0, left
@@ -32,9 +32,9 @@ def merge(arr, left, mid, right):
 def merge_sort(arr, left, right):
     if left < right:
         mid = left + (right - left) // 2
-
-        merge_sort(arr, left, mid)
-        merge_sort(arr, mid + 1, right)
+        # pi
+        merge_sort(arr, left, mid) #quickSort(arr, low, pi-1)
+        merge_sort(arr, mid+1, right) #quickSort(arr, pi+1 , high)
 
         merge(arr, left, mid, right)
 

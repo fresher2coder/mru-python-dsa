@@ -6,6 +6,7 @@ class MaxHeap:
 
     # Insertion into MaxHeap
     def insert(self, val):
+        self.heap.append(val)
         heapq.heappush(self.heap, -val)
 
     # Deletion from MaxHeap (removes the largest element)

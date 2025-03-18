@@ -1,3 +1,10 @@
+class Node:
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+        self.parent = None  # To track parent for heapify-up
+
 class MaxHeap:
     def __init__(self):
         self.root = None

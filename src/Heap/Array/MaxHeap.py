@@ -1,10 +1,10 @@
 class MaxHeap:
-    def __init__(self, capacity=100):
+    def __init__(self, capacity=100): #20 half(10)->doubled 3/4(16)->halfed(10)
         self.heap = []
         self.capacity = capacity
 
     def parent(self, i):
-        return (i - 1) // 2
+        return (i-1) // 2
 
     def left_child(self, i):
         return 2 * i + 1

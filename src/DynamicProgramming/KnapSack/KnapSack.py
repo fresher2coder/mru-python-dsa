@@ -1,19 +1,17 @@
 def knapsack_01(W, wt, val, N):
-    dp = [[0] * (W + 1) for _ in range(N + 1)]
+    dp = [[0] * (W+1) for _ in range(N+1)]
 
-    for i in range(1, N + 1):
-        for w in range(1, W + 1):
-            if wt[i - 1] <= w:
-                dp[i][w] = max(dp[i - 1][w], val[i - 1] + dp[i - 1][w - wt[i - 1]])
+    for i in range(1, N+1):
+        for w in range(1, W+1):
+            #include or exclude
+            if wt[i-1] > w:
+                #exclude - prev value
+                dp[i][w] = dp[i-1][w]
             else:
-                dp[i][w] = dp[i - 1][w]
-
-    # Print DP table for debugging
-    # print("DP Table:")
-    # for row in dp:
-    #     print(row)
-
+                #include
+                dp[i][w] = max(dp[i-1][w], val[i-1] + dp[i-1][w-wt[i-1]])
     return dp[N][W]
+
 
 
 #Optimizded

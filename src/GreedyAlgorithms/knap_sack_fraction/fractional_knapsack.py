@@ -1,6 +1,5 @@
 import math
 
-
 def fractional_knapsack(capacity, items):
     # Sort items by value/weight ratio in descending order
     items.sort(key=lambda x: x[1] / x[0], reverse=True)
